@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #000000, #4b0082);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    header nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #00d4ff;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .hero span {
+      display: block;
+      font-size: 1.5rem;
+      color: #7bf7ff;
+      margin-top: 0.5rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(75, 0, 130, 0.5), rgba(0, 0, 0, 0.9));
+      z-index: -1;
+    }
+
+    .content {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .about {
+      flex: 4;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .portfolio {
+      flex: 12;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .portfolio-item {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    svg {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      margin: 0 auto 2rem auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Portfolio</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1040.37 818.79">
+    <defs>
+      <style>
+        .st0 {
+          fill: url(#animatedGradient);
+        }
+        @keyframes gradientAnimation {
+          0% {
+            stop-color: #ff7eb3;
+          }
+          25% {
+            stop-color: #ffeb3b;
+          }
+          50% {
+            stop-color: #7bf7ff;
+          }
+          75% {
+            stop-color: #b37bff;
+          }
+          100% {
+            stop-color: #ff7eb3;
+          }
+        }
+
+        .animate-path {
+          fill: none;
+          stroke: url(#animatedGradient);
+          stroke-width: 2;
+          stroke-dasharray: 2000;
+          stroke-dashoffset: 0;
+          animation: draw 2s ease-in-out forwards;
+        }
+
+        .fade-in {
+          opacity: 0;
+          animation: fadeIn 2s ease-in-out forwards 1s;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+      </style>
+
+      <linearGradient id="animatedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff7eb3" style="stop-opacity:1;">
+          <animate attributeName="stop-color" values="#ff7eb3;#ffeb3b;#7bf7ff;#b37bff;#ff7eb3" dur="6s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="50%" stop-color="#ffeb3b" style="stop-opacity:1;">
+          <animate attributeName="stop-color" values="#ffeb3b;#7bf7ff;#b37bff;#ff7eb3;#ffeb3b" dur="6s" repeatCount="indefinite" />
+        </stop>
+        <stop offset="100%" stop-color="#7bf7ff" style="stop-opacity:1;">
+          <animate attributeName="stop-color" values="#7bf7ff;#b37bff;#ff7eb3;#ffeb3b;#7bf7ff" dur="6s" repeatCount="indefinite" />
+        </stop>
+      </linearGradient>
+    </defs>
+
+    <!-- Animated Arc -->
+    <g id="arc">
+      <g id="Layer_19">
+        <path
+          class="animate-path"
+          d="M790.42,421.95c0,24.76-3.01,49.05-8.83,72.48.34.03.67.08.99.16,5.84-23.48,8.84-47.83,8.84-72.64,0-80.02-31.24-155.25-87.96-211.84s-132.14-87.75-212.36-87.75-155.64,31.16-212.36,87.75-87.96,131.82-87.96,211.84c0,20.78,2.12,41.23,6.24,61.12.34-.02.69,0,1.03.05-4.13-19.9-6.27-40.37-6.27-61.17,0-79.75,31.13-154.74,87.67-211.13,56.53-56.4,131.7-87.45,211.65-87.45s155.12,31.06,211.65,87.45c56.53,56.4,87.67,131.38,87.67,211.13Z"
+        />
+      </g>
+    </g>
+
+    <!-- Main Logo Parts -->
+    <g id="mainL" class="fade-in">
+      <path class="st0" d="M372.55,449.94c13.95-13.95,63-54.96,79.81-70.33,32.37-29.58,56.15-68.37,49.67-106.05-11.88-69.06-101.33-107.76-154.45-90.18,63.64,27.66,113.58,69.48,65,127.01,0,0-24.08,37.11-39,32-11.04-3.78,45.78-85.61,31-77-180.54,92.08-147.91,302.32-21.43,349.75-26.79-10.05-70.91-104.91-10.6-165.21Z" />
+    </g>
+
+    <g id="mainC" class="fade-in">
+      <path class="st0" d="M599.57,321.4c-2.17-42.39-7.12-70.16-28.88-112.02-19.53-37.55-73.15-90.53-83.58-111.7-24.81-50.36,19.37-67.44,35.82-69.59-57.91,6.6-75.45,62.11-46.59,113.2,50.82,89.94,87.79,180.94-26.78,270.7-54.14,42.42-83.09,75.58-87.07,113.3-5.67,53.72,30.64,112.53,99.09,116.11-103.82-112.71,147.61-132.3,137.98-320Z" />
+    </g>
+
+    <g id="mainR" class="fade-in">
+      <path class="st0" d="M720.27,358.4c-10.82-26.48-28.44-49.7-54.14-74.23-24.56-23.44-39.63-41.86-49.12-60.28-7.87-15.29-8.37-30.7-8.37-30.7,0,0-5.13,9.86-3.91,26.23,1.67,22.33,6.97,33.36,11.16,42.98,9.49,21.77,20.65,42.42,34.6,62.51,13.95,20.09,31.8,49.81,36.84,83.16,4.47,29.58-3.75,85.6-20.09,111.63-30.14,48-86.51,66.98-88.19,60.84-1.67-6.14,10.6-13.95,17.86-19.53,7.26-5.58,54.14-37.4,64.19-92.09,6.45-35.11-.56-64.19-13.95-90.42-13.4-26.23-30.14-44.65-30.14-44.65,0,0,1.67,16.74,1.12,26.23-.56,9.49-.56,24-5.58,44.09-5.02,20.09-21.77,45.77-37.4,64.74-15.63,18.98-52,49.17-75.82,73.67-22.24,22.88-44.65,25.67-38.6,60.84,5.25,30.5,19.62,39.63,19.62,39.63,0,0,7.74,2.41,18.33,1.67,48-3.35,121.12-11.72,179.72-79.81,41-47.64,73.12-130.05,41.86-206.51Z" />
+    </g>
+  </svg>
+
+  <h1>BONNIEFIRE</h1>
+  <span>UI / UX / AI</span>
+</section>
+
+<section class="content" id="projects">
+  <h3>About This Portfolio</h3>
+  <p>This is a showcase of my skills and creativity as a front-end developer. Explore my projects and learn more about my journey.</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

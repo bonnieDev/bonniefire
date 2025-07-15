@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BonnieFire - Pinball Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
+        body { background: black; color: white; display: flex; flex-direction: column; height: 100vh; overflow: hidden; align-items: center; position: relative; }
+        .scoreboard {
+            width: 100%;
+            height: 15%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .play-area {
+            width: 100%;
+            height: 85%;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle, #222, #000);
+        }
+        .start-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #ff00ff;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+        }
+        .pinball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffcc00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+            display: block;
+        }
+        .bumper {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+        .flipper {
+            position: absolute;
+            width: 140px;
+            height: 20px;
+            background: #ff00ff;
+            border-radius: 10px;
+            bottom: 10%;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+            transform-origin: center;
+            transition: transform 0.1s ease-in-out;
+        }
+        .left-flipper {
+            left: 46%;
+            transform: rotate(0deg);
+        }
+        .right-flipper {
+            right: 46%;
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="scoreboard">Score: <span id="score">0</span></div>
+    <div class="play-area">
+        <button class="start-button" id="startButton">Start</button>
+        <div class="pinball" id="pinball"></div>
+        <div class="bumper" style="top: 20%; left: 25%;"></div>
+        <div class="bumper" style="top: 30%; left: 50%;"></div>
+        <div class="bumper" style="top: 40%; left: 70%;"></div>
+        <div class="bumper" style="top: 55%; left: 35%;"></div>
+        <div class="bumper" style="top: 65%; left: 60%;"></div>
+        <div class="flipper left-flipper" id="leftFlipper"></div>
+        <div class="flipper right-flipper" id="rightFlipper"></div>
+    </div>
+    <script>
+        let x, y, dx, dy, score = 0;
+        let isPlaying = false;
+        let playMode = false;
+        const launchSpeed = 15;
+        const startButton = document.getElementById("startButton");
+        const pinball = document.getElementById("pinball");
+        const leftFlipper = document.getElementById("leftFlipper");
+        const rightFlipper = document.getElementById("rightFlipper");
+        
+        startButton.addEventListener("click", togglePlayMode);
+        
+        function togglePlayMode() {
+            if (!isPlaying) {
+                isPlaying = true;
+                playMode = false;
+                startButton.textContent = "Play";
+                lowerFlippers();
+                launchBall();
+            } else {
+                playMode = true;
+                startButton.textContent = "Block";
+                raiseFlippers();
+            }
+        }
+        
+        function launchBall() {
+            x = window.innerWidth * 0.85;
+            y = window.innerHeight * 0.8;
+            dx = -3;
+            dy = -launchSpeed;
+            moveBall();
+        }
+        
+        function moveBall() {
+            x += dx;
+            y += dy;
+            dy += 0.1;
+            
+            if (x <= 0 || x >= window.innerWidth - 20) dx = -dx;
+            if (y <= 50) dy = Math.abs(dy);
+            if (y >= window.innerHeight - 50) {
+                if (!playMode) {
+                    dy = -launchSpeed;
+                } else {
+                    if (x < window.innerWidth * 0.46 || x > window.innerWidth * 0.54) {
+                        dy = -launchSpeed;
+                    } else {
+                        isPlaying = false;
+                        startButton.textContent = "Start";
+                    }
+                }
+            }
+            pinball.style.left = `${x}px`;
+            pinball.style.top = `${y}px`;
+            if (isPlaying) requestAnimationFrame(moveBall);
+        }
+        
+        function raiseFlippers() {
+            leftFlipper.style.transform = "rotate(-90deg)";
+            rightFlipper.style.transform = "rotate(90deg)";
+        }
+        
+        function lowerFlippers() {
+            leftFlipper.style.transform = "rotate(0deg)";
+            rightFlipper.style.transform = "rotate(0deg)";
+        }
+        
+        function updateScore(points) {
+            score += points;
+            document.getElementById("score").textContent = score;
+        }
+    </script>
+</body>
+</html>

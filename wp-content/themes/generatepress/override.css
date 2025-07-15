@@ -1,0 +1,27 @@
+/* Gradient Background */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2B003B;
+    background: linear-gradient(180deg, #2B003B, #A44ACD); /* Dark to Light Purple */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgb(232, 207, 207); /* Ensure text stands out */
+  }
+  
+  /* Container Styling */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.6); /* Optional semi-transparent overlay for content */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  

@@ -1,0 +1,45 @@
+.st0 {
+    fill: url(#animatedGradient);
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      stop-color: #ff7eb3;
+    }
+    25% {
+      stop-color: #ffeb3b;
+    }
+    50% {
+      stop-color: #7bf7ff;
+    }
+    75% {
+      stop-color: #b37bff;
+    }
+    100% {
+      stop-color: #ff7eb3;
+    }
+  }
+  
+  .animate-path {
+    fill: none;
+    stroke: url(#animatedGradient);
+    stroke-width: 2;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 0;
+    animation: draw 2s ease-in-out forwards;
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards 1s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
